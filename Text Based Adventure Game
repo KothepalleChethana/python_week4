@@ -1,0 +1,113 @@
+import time
+def delay_print(message):
+    for char in message:
+        print(char, end='', flush=True)
+        time.sleep(0.03)
+    print()
+def haunted_mansion():
+    delay_print("Welcome to the Haunted Mansion Adventure!")
+    delay_print("You find yourself standing in front of a dark and eerie mansion. You have three options:")
+    while True:
+        delay_print("Choose your next move:")
+        print("1. Enter the mansion through the front door.")
+        print("2. Search around the back of the mansion.")
+        print("3. Run away from the mansion.")
+        choice = input("Enter the number of your choice: ")
+        if choice == '1':
+            delay_print("You summon your courage and enter the mansion through the front door.")
+            front_door()
+            break
+        elif choice == '2':
+            delay_print("You cautiously explore the back of the mansion.")
+            back_mansion()
+            break
+        elif choice == '3':
+            delay_print("You panic and run away from the mansion.")
+            game_over()
+            break
+        else:
+            delay_print("Invalid choice. Please choose 1, 2, or 3.")
+def front_door():
+    delay_print("You step into a dimly lit foyer, and the door slams shut behind you.")
+    delay_print("What will you do next?")
+    print("1. Explore the ground floor.")
+    print("2. Head upstairs.")
+    print("3. Try to open the front door.")
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        delay_print("You explore the ground floor and find some creepy things, but nothing dangerous.")
+        treasure()
+    elif choice == '2':
+        delay_print("You head upstairs and encounter a ghostly figure. It chases you back downstairs.")
+        game_over()
+    elif choice == '3':
+        delay_print("The front door won't budge. It seems you're stuck in the mansion.")
+        front_door()
+    else:
+        delay_print("Invalid choice. Please choose 1, 2, or 3.")
+        front_door()
+def back_mansion():
+    delay_print("You find a hidden entrance in the back of the mansion.")
+    delay_print("You can:")
+    print("1. Enter the hidden passage.")
+    print("2. Change your mind and go to the front of the mansion.")
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        delay_print("You enter the hidden passage and discover a secret room with a treasure chest!")
+        delay_print("Congratulations, you've found the treasure!")
+        win()
+    elif choice == '2':
+        delay_print("You decide to go back to the front of the mansion.")
+        haunted_mansion()
+    else:
+        delay_print("Invalid choice. Please choose 1 or 2.")
+        back_mansion()
+def graveyard():
+    delay_print("You venture into a spooky graveyard behind the mansion.")
+    delay_print("You see a few paths ahead:")
+    print("1. Investigate the creepy mausoleum.")
+    print("2. Explore the old gravestones.")
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        delay_print("As you enter the mausoleum, you disturb restless spirits. They chase you out of the graveyard.")
+        game_over()
+    elif choice == '2':
+        delay_print("You explore the gravestones and find a hidden passage leading to the mansion's cellar.")
+        cellar()
+    else:
+        delay_print("Invalid choice. Please choose 1 or 2.")
+        graveyard()
+def cellar():
+    delay_print("You find yourself in a dark and eerie cellar beneath the mansion.")
+    delay_print("You can:")
+    print("1. Search for clues and items.")
+    print("2. Try to find a way back upstairs.")
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        delay_print("You discover a hidden room with a chest filled with treasures!")
+        delay_print("Congratulations, you've found the treasure!")
+        win()
+    elif choice == '2':
+        delay_print("You attempt to find your way back upstairs but get lost in the dark cellar.")
+        game_over()
+    else:
+        delay_print("Invalid choice. Please choose 1 or 2.")
+        cellar()
+def game_over():
+    delay_print("Game Over. Would you like to try again?")
+    play_again()
+def win():
+    delay_print("You won the game! Would you like to play again?")
+    play_again()
+def treasure():
+    delay_print("You've reached your destination and found a treasure chest!")
+    delay_print("Congratulations! You won the game.")
+    play_again()
+def play_again():
+    choice = input("Do you want to play again? (yes/no): ")
+    if choice.lower() == 'yes':
+        haunted_mansion()
+    else:
+        delay_print("Thanks for playing! Goodbye.")
+if _name_ == "_main_":
+    haunted_mansion()
